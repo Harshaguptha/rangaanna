@@ -1,0 +1,23 @@
+https://mikestephenson.me/2021/01/24/azure-devops-yaml-pipeline-sharing-a-copy-of-your-sample-to-github/
+
+Method 1: Using a Personal Access Token
+
+Go to your GitHub account and generate a personal access token with the repo scope. You can do this by going to Settings > Developer settings > Personal access tokens.
+Create a new Azure DevOps pipeline or edit an existing one.
+In the pipeline settings, go to Variables and add a new variable named GITHUB_TOKEN with the value of your personal access token.
+In your YAML file, add the following code to authenticate with GitHub:
+
+steps:
+  - task: GitHubAuth@0
+    displayName: 'GitHub Authentication'
+    inputs:
+      token: $(GITHUB_TOKEN)
+
+Use the checkout task to access your private GitHub repository:
+
+steps:
+  - task: Checkout@2
+    displayName: 'Checkout'
+    inputs:
+      repository: 'your-github-username/your-private-repo'
+      authentication: $(GitHubAuth)
