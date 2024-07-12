@@ -22,11 +22,11 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Login to Azure with Service Principal
-      uses: Azure/login@v2
-      with:
-        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
-        creds: ${{ secrets.AZURE_CREDENTIALS }} 
+    # - name: Login to Azure with Service Principal
+    #   uses: Azure/login@v2
+    #   with:
+    #     # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+    #     creds: ${{ secrets.AZURE_CREDENTIALS }} 
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -47,7 +47,8 @@ jobs:
        ls -ltr
        echo ${{github.workspace}}
        cd ${{env.WORKING_DIRECTORY}}
-       # az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }} 
+       # az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_CLIENT_SECRET }}} 
+       az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET } --tenant ${{ secrets.ARM_CLIENT_SECRET }}
        terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
