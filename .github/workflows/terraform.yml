@@ -4,13 +4,13 @@ on:
   push:
     branches: [ "main" ]
     
-env:
-  # ARM_CLIENT_ID: ${{ secrets.DEV_CLIENT_ID }}
-  # ARM_CLIENT_SECRET: ${{ secrets.DEV_CLIENT_SECRET }}
-  # ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
-  # ARM_SUBSCRIPTION_ID: ${{ secrets.DEV_SUBSCRIPTION_ID }}
+# env:
+#   ARM_CLIENT_ID: ${{ secrets.DEV_CLIENT_ID }}
+#   ARM_CLIENT_SECRET: ${{ secrets.DEV_CLIENT_SECRET }}
+#   ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
+#   ARM_SUBSCRIPTION_ID: ${{ secrets.DEV_SUBSCRIPTION_ID }}
   
-  WORKING_DIRECTORY: keyvault
+#   WORKING_DIRECTORY: keyvault
 jobs:
   deploy-azure-infra-terraform-keyvault:
     name: 'keyvault creation'
@@ -35,7 +35,7 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
+    - name: Terraform commands
       id: init
       env:
         ARM_CLIENT_ID: ${{ secrets.DEV_CLIENT_ID }}
@@ -46,7 +46,8 @@ jobs:
        pwd
        ls -ltr
        echo ${{github.workspace}}
-       cd ${{env.WORKING_DIRECTORY}}
+       #cd ${{env.WORKING_DIRECTORY}}
+       cd ${{github.workspace}}/keyvault
        terraform init
        terraform plan --var-file=dev.tfvars 
        terraform apply --var-file=dev.tfvars -auto-approve -input=false
