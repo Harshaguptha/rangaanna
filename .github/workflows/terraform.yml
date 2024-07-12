@@ -3,7 +3,6 @@ name: 'terraform-keyvault-creation'
 on:
   push:
     branches: [ "main" ]
-
 env:
   ARM_CLIENT_ID: ${{ secrets.DEV_CLIENT_ID }}
   ARM_CLIENT_SECRET: ${{ secrets.DEV_CLIENT_SECRET }}
