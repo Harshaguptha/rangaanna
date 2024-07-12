@@ -62,7 +62,8 @@ jobs:
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }} 
       run: |
        cd ${{env.WORKING_DIRECTORY}}
-       terraform plan --var-file=dev.tfvars -input=false -out=tfplan ; cat tfplan > tf-file.plan
+       terraform plan --var-file=dev.tfvars 
+       # -input=false -out=tfplan ; cat tfplan > tf-file.plan
        ls -ltr
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
@@ -71,5 +72,6 @@ jobs:
       run: | 
        cd ${{env.WORKING_DIRECTORY}}
        ls -ltr
-       terraform apply tf-file.plan 
+       terraform apply --var-file=dev.tfvars -auto-approve -input=false
+       # tf-file.plan 
       # -auto-approve -input=false
