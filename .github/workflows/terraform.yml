@@ -55,7 +55,7 @@ env:
   ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.DEV_SUBSCRIPTION_ID }}
   
-  WORKING_DIRECTORY: keyvault
+  WORKING_DIRECTORY: ${{github.workspace}}/keyvault
 jobs:
   terraform:
     name: 'Terraform'
