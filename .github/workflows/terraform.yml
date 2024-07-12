@@ -23,9 +23,9 @@ jobs:
     - name: Use Azure Service Principal
       uses: azure/login@v1
       with:
-        client_id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant_id: ${{ secrets.AZURE_TENANT_ID }}
-        client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}  
+        client_id: ${{ secrets.DEV_CLIENT_ID }}
+        tenant_id: ${{ secrets.TENANT_ID }}
+        client_secret: ${{ secrets.DEV_CLIENT_SECRET }}  
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
