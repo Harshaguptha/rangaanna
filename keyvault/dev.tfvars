@@ -1,0 +1,2 @@
+rgname = "keyvaultrg"
+name = "keyvaultrg"
