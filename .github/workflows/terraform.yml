@@ -38,7 +38,8 @@ jobs:
       run: |
        pwd
        ls -ltr
-       cd {{env.WORKING_DIRECTORY}}
+       echo ${{github.workspace}}
+       cd ${{env.WORKING_DIRECTORY}}
        terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
