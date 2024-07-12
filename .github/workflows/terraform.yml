@@ -47,7 +47,6 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
-  pull_request:
 
 env:
   ARM_CLIENT_ID: ${{ secrets.DEV_CLIENT_ID }}
@@ -55,16 +54,17 @@ env:
   ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
   ARM_SUBSCRIPTION_ID: ${{ secrets.DEV_SUBSCRIPTION_ID }}
   
-  WORKING_DIRECTORY: ${{github.workspace}}/keyvault
+  WORKING_DIRECTORY: keyvault
 jobs:
-  terraform:
-    name: 'Terraform'
+  deploy-azure-infra-terraform-keyvault:
+    name: 'keyvault creation'
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
     steps:
     # Checkout the repository to the GitHub Actions runner
