@@ -55,11 +55,11 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      env:
-        ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-        ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-        ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-        ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }} 
+      # env:
+      #   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      #   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      #   ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      #   ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }} 
       run: |
        cd ${{env.WORKING_DIRECTORY}}
        terraform plan -input=false -out=tfplan ; cat tfplan > tf-file.plan
