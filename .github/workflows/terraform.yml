@@ -86,7 +86,7 @@ jobs:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}    
       run: |
-       cd ${{ env.WORKING_DIRECTORY }}
+       cd Harshaguptha/rangaanna/keyvault
        terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
